@@ -3,11 +3,20 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
 import helmet from 'helmet';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// compute __dirname for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve image assets from /img
+app.use('/img', express.static(path.join(__dirname, 'images')));
 
 // Middleware
 app.use(helmet());
@@ -37,6 +46,8 @@ app.get('/api/health', (req, res) => {
 
 // Get portfolio data (Fresher Version)
 app.get('/api/portfolio', (req, res) => {
+  const backendBase = process.env.BACKEND_URL || `http://localhost:${PORT}`;
+
   res.json({
     profile: {
       name: "Junnuthula Vidhya Reddy",
@@ -46,7 +57,7 @@ app.get('/api/portfolio', (req, res) => {
       phone: "+91 8897096901",
       location: "India",
       bio: "Enthusiastic and motivated aspiring full-stack developer with a strong foundation in Python, JavaScript, React, and Express. Passionate about learning modern web technologies and building meaningful applications.",
-      avatar: "/api/placeholder/150/150",
+      avatar: `${backendBase}/img/vvv.jpg`,
       social: [
         { name: "GitHub", url: "https://github.com/VidhyaReddy07", icon: "github" },
         { name: "LinkedIn", url: "https://www.linkedin.com/in/junnuthula-vidhya-reddy-1a0070263/", icon: "linkedin" }
