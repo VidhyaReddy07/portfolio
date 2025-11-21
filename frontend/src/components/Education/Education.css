@@ -1,0 +1,407 @@
+/* Education 3D Effects */
+.education-section-3d {
+  padding: 6rem 0;
+  background: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.dark .education-section-3d {
+  background: rgb(15, 23, 42);
+}
+
+.education-bg-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+  transform-style: preserve-3d;
+  animation: shapesFloat3D 20s ease-in-out infinite;
+}
+
+@keyframes shapesFloat3D {
+  0%, 100% {
+    transform: 
+      perspective(1000px)
+      rotate(0deg)
+      scale(1);
+  }
+  50% {
+    transform: 
+      perspective(1000px)
+      rotate(180deg)
+      scale(1.1);
+  }
+}
+
+.education-title-3d {
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  color: rgb(15, 23, 42);
+  margin-bottom: 4rem;
+  transform-style: preserve-3d;
+  animation: educationTitleReveal 1s cubic-bezier(0.23, 1, 0.320, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px) rotateX(15deg);
+}
+
+.dark .education-title-3d {
+  color: rgb(248, 250, 252);
+}
+
+@keyframes educationTitleReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+.education-grid-3d {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  transform-style: preserve-3d;
+}
+
+@media (min-width: 1024px) {
+  .education-grid-3d {
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+  }
+}
+
+.education-column-3d {
+  transform-style: preserve-3d;
+}
+
+.education-column-title-3d {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgb(15, 23, 42);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transform-style: preserve-3d;
+  animation: columnTitleReveal 0.8s cubic-bezier(0.23, 1, 0.320, 1) forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.dark .education-column-title-3d {
+  color: rgb(248, 250, 252);
+}
+
+@keyframes columnTitleReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.column-icon-3d {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: rgb(59, 130, 246);
+  transform-style: preserve-3d;
+}
+
+.dark .column-icon-3d {
+  color: rgb(96, 165, 250);
+}
+
+.education-cards-3d {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transform-style: preserve-3d;
+}
+
+.education-card-3d {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.7) 100%);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+  animation: educationCardReveal 0.8s cubic-bezier(0.23, 1, 0.320, 1) forwards;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .education-card-3d {
+  background: linear-gradient(135deg, 
+    rgba(30, 41, 59, 0.9) 0%,
+    rgba(15, 23, 42, 0.7) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes educationCardReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.education-card-3d:hover {
+  transform: 
+    perspective(1000px)
+    rotateX(5deg)
+    rotateY(-5deg)
+    translateY(-10px)
+    translateZ(20px);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.2),
+    0 0 35px rgba(59, 130, 246, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.education-card-header-3d {
+  margin-bottom: 1rem;
+  transform-style: preserve-3d;
+}
+
+.education-degree-3d {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: rgb(15, 23, 42);
+  margin-bottom: 0.5rem;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+}
+
+.dark .education-degree-3d {
+  color: rgb(248, 250, 252);
+}
+
+.education-card-3d:hover .education-degree-3d {
+  transform: translateZ(5px);
+  color: rgb(59, 130, 246);
+}
+
+.dark .education-card-3d:hover .education-degree-3d {
+  color: rgb(96, 165, 250);
+}
+
+.education-institution-3d {
+  font-size: 1rem;
+  color: rgb(59, 130, 246);
+  font-weight: 600;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+}
+
+.dark .education-institution-3d {
+  color: rgb(96, 165, 250);
+}
+
+.education-card-3d:hover .education-institution-3d {
+  transform: translateZ(3px);
+}
+
+.education-period-3d {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgb(100, 116, 139);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+}
+
+.dark .education-period-3d {
+  color: rgb(148, 163, 184);
+}
+
+.education-card-3d:hover .education-period-3d {
+  transform: translateX(5px) translateZ(3px);
+}
+
+.period-icon-3d {
+  width: 1rem;
+  height: 1rem;
+}
+
+.education-description-3d {
+  color: rgb(100, 116, 139);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+}
+
+.dark .education-description-3d {
+  color: rgb(148, 163, 184);
+}
+
+.education-card-3d:hover .education-description-3d {
+  transform: translateZ(3px);
+}
+
+.education-grade-3d {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transform-style: preserve-3d;
+}
+
+.grade-label-3d {
+  color: rgb(100, 116, 139);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+}
+
+.dark .grade-label-3d {
+  color: rgb(148, 163, 184);
+}
+
+.grade-value-3d {
+  color: rgb(59, 130, 246);
+  font-size: 0.875rem;
+  font-weight: 700;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+}
+
+.dark .grade-value-3d {
+  color: rgb(96, 165, 250);
+}
+
+.education-card-3d:hover .grade-label-3d,
+.education-card-3d:hover .grade-value-3d {
+  transform: translateZ(3px);
+}
+
+.education-certificate-link-3d {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgb(59, 130, 246);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transform-style: preserve-3d;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.dark .education-certificate-link-3d {
+  color: rgb(96, 165, 250);
+}
+
+.education-certificate-link-3d::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(59, 130, 246, 0.1), 
+    transparent);
+  transition: left 0.5s ease;
+}
+
+.education-certificate-link-3d:hover::before {
+  left: 100%;
+}
+
+.education-certificate-link-3d:hover {
+  background: rgba(59, 130, 246, 0.05);
+  transform: 
+    translateY(-2px)
+    translateZ(8px);
+  box-shadow: 
+    0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.dark .education-certificate-link-3d:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.certificate-icon-3d {
+  width: 1rem;
+  height: 1rem;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+}
+
+.education-certificate-link-3d:hover .certificate-icon-3d {
+  transform: 
+    rotate(45deg)
+    translateZ(5px);
+}
+
+.education-empty-3d {
+  text-align: center;
+  color: rgb(100, 116, 139);
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 1rem;
+  border: 2px dashed rgba(100, 116, 139, 0.3);
+  transform-style: preserve-3d;
+}
+
+.dark .education-empty-3d {
+  color: rgb(148, 163, 184);
+  background: rgba(30, 41, 59, 0.5);
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+/* Stagger animations for education cards */
+.education-card-3d:nth-child(1) { animation-delay: 0.1s; }
+.education-card-3d:nth-child(2) { animation-delay: 0.2s; }
+.education-card-3d:nth-child(3) { animation-delay: 0.3s; }
+.education-card-3d:nth-child(4) { animation-delay: 0.4s; }
+.education-card-3d:nth-child(5) { animation-delay: 0.5s; }
+
+/* Stagger animations for column titles */
+.education-column-3d:nth-child(1) .education-column-title-3d { animation-delay: 0.1s; }
+.education-column-3d:nth-child(2) .education-column-title-3d { animation-delay: 0.2s; }
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .education-bg-shapes {
+    animation: none;
+  }
+  
+  .education-title-3d,
+  .education-column-title-3d,
+  .education-card-3d {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .education-card-3d:hover,
+  .education-card-3d:hover .education-degree-3d,
+  .education-card-3d:hover .education-institution-3d,
+  .education-card-3d:hover .education-period-3d,
+  .education-card-3d:hover .education-description-3d,
+  .education-card-3d:hover .grade-label-3d,
+  .education-card-3d:hover .grade-value-3d,
+  .education-certificate-link-3d:hover,
+  .education-certificate-link-3d:hover .certificate-icon-3d {
+    transform: none;
+  }
+}

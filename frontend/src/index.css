@@ -1,41 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --primary: 59 130 246;
+    --secondary: 139 92 246;
+    --accent: 14 165 233;
+    --background: 255 255 255;
+    --foreground: 15 23 42;
+    --muted: 100 116 139;
+    --card: 255 255 255;
+    --border: 226 232 240;
+  }
+
+  .dark {
+    --primary: 96 165 250;
+    --secondary: 167 139 250;
+    --accent: 56 189 248;
+    --background: 15 23 42;
+    --foreground: 248 250 252;
+    --muted: 148 163 184;
+    --card: 30 41 59;
+    --border: 51 65 85;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
   html {
     scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, sans-serif;
   }
-  
+
   body {
-    @apply font-sans antialiased;
+    background: rgb(var(--background));
+    color: rgb(var(--foreground));
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* Selection styles */
+  ::selection {
+    background: rgb(var(--primary));
+    color: white;
   }
 }
 
 @layer components {
-  .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
-  }
-  
-  .btn-secondary {
-    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
-  }
-  
-  .section-padding {
-    @apply py-16 px-4 sm:px-6 lg:px-8;
-  }
-  
-  .container-custom {
-    @apply max-w-7xl mx-auto;
-  }
-  .card-3d {
+  /* Common 3D utility classes */
+  .transform-3d {
     transform-style: preserve-3d;
-    transition: transform 350ms cubic-bezier(.2,.8,.2,1), box-shadow 350ms;
-    will-change: transform;
+  }
+  
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .backface-hidden {
     backface-visibility: hidden;
   }
-  .card-3d:hover {
-    transform: perspective(900px) rotateX(4deg) rotateY(-6deg) translateY(-6px);
-    box-shadow: 0 20px 45px rgba(15,23,42,0.12), 0 6px 18px rgba(15,23,42,0.06);
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    }
+    to {
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.8), 0 0 40px rgba(59, 130, 246, 0.6);
+    }
+  }
+}
+
+/* Dark mode transitions */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }

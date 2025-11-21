@@ -1,11 +1,16 @@
 import React from 'react';
+import './Loading.css';
 
 const Loading = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="text-center">
-        <div className="w-16 h-16 border-4 border-primary-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-        <p className="text-gray-600">Loading portfolio...</p>
+    <div className="loading-container-3d">
+      <div className="loading-content-3d">
+        <div className="loading-spinner-3d">
+          <div className="spinner-ring-3d ring-1"></div>
+          <div className="spinner-ring-3d ring-2"></div>
+          <div className="spinner-ring-3d ring-3"></div>
+        </div>
+        <p className="loading-text-3d">Loading portfolio...</p>
       </div>
     </div>
   );

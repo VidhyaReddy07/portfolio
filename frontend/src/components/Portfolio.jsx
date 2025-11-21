@@ -1,14 +1,14 @@
 import React from 'react';
 import { usePortfolio } from '../hooks/usePortfolio';
-import Header from './sections/Header';
-import Hero from './sections/Hero';
-import About from './sections/About';
-import Skills from './sections/Skills';
-import Projects from './sections/Projects';
-import Experience from './sections/Experience';
-import Education from './sections/Education';
-import Contact from './sections/Contact';
-import Footer from './sections/Footer';
+import Header from './Header/Header';
+import Hero from './Hero/Hero';
+import About from './About/About';
+import Skills from './Skills/Skills';
+import Projects from './Projects/Projects';
+import Experience from './Experience/Experience';
+import Education from './Education/Education';
+import Contact from './Contact/Contact';
+import Footer from './Footer/Footer';
 import Loading from './ui/Loading';
 
 const Portfolio = () => {

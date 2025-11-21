@@ -1,0 +1,180 @@
+/* Loading 3D Effects */
+.loading-container-3d {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, 
+    rgba(59, 130, 246, 0.02) 0%,
+    rgba(139, 92, 246, 0.01) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.dark .loading-container-3d {
+  background: linear-gradient(135deg, 
+    rgba(15, 23, 42, 0.8) 0%,
+    rgba(30, 41, 59, 0.6) 100%);
+}
+
+.loading-container-3d::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+  transform-style: preserve-3d;
+  animation: loadingBgFloat3D 10s ease-in-out infinite;
+}
+
+@keyframes loadingBgFloat3D {
+  0%, 100% {
+    transform: 
+      perspective(1000px)
+      rotate(0deg)
+      scale(1);
+  }
+  50% {
+    transform: 
+      perspective(1000px)
+      rotate(180deg)
+      scale(1.1);
+  }
+}
+
+.loading-content-3d {
+  text-align: center;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.loading-spinner-3d {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 2rem;
+  transform-style: preserve-3d;
+}
+
+.spinner-ring-3d {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  animation: spinnerRotate3D 2s linear infinite;
+}
+
+.ring-1 {
+  border-top: 3px solid rgb(59, 130, 246);
+  animation-delay: 0s;
+}
+
+.ring-2 {
+  border-right: 3px solid rgb(139, 92, 246);
+  animation-delay: -0.5s;
+}
+
+.ring-3 {
+  border-bottom: 3px solid rgb(14, 165, 233);
+  animation-delay: -1s;
+}
+
+@keyframes spinnerRotate3D {
+  0% {
+    transform: 
+      perspective(1000px)
+      rotateX(0deg)
+      rotateY(0deg)
+      rotateZ(0deg)
+      scale(1);
+  }
+  25% {
+    transform: 
+      perspective(1000px)
+      rotateX(45deg)
+      rotateY(45deg)
+      rotateZ(90deg)
+      scale(1.1);
+  }
+  50% {
+    transform: 
+      perspective(1000px)
+      rotateX(90deg)
+      rotateY(90deg)
+      rotateZ(180deg)
+      scale(1.2);
+  }
+  75% {
+    transform: 
+      perspective(1000px)
+      rotateX(135deg)
+      rotateY(135deg)
+      rotateZ(270deg)
+      scale(1.1);
+  }
+  100% {
+    transform: 
+      perspective(1000px)
+      rotateX(180deg)
+      rotateY(180deg)
+      rotateZ(360deg)
+      scale(1);
+  }
+}
+
+.loading-text-3d {
+  font-size: 1.125rem;
+  color: rgb(100, 116, 139);
+  font-weight: 600;
+  transform-style: preserve-3d;
+  animation: loadingTextPulse3D 2s ease-in-out infinite;
+}
+
+.dark .loading-text-3d {
+  color: rgb(148, 163, 184);
+}
+
+@keyframes loadingTextPulse3D {
+  0%, 100% {
+    opacity: 0.7;
+    transform: 
+      translateZ(0)
+      scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: 
+      translateZ(10px)
+      scale(1.05);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .loading-container-3d::before,
+  .spinner-ring-3d,
+  .loading-text-3d {
+    animation: none;
+  }
+  
+  .loading-container-3d::before {
+    transform: none;
+  }
+  
+  .spinner-ring-3d {
+    border-color: rgb(59, 130, 246);
+  }
+  
+  .loading-text-3d {
+    opacity: 1;
+    transform: none;
+  }
+}

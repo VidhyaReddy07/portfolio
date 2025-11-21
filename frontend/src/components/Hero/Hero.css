@@ -1,0 +1,622 @@
+/* Hero 3D Effects */
+.hero-section-3d {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, 
+    rgba(59, 130, 246, 0.03) 0%,
+    rgba(139, 92, 246, 0.02) 50%,
+    rgba(14, 165, 233, 0.03) 100%);
+  position: relative;
+  overflow: hidden;
+  padding-top: 5rem;
+}
+
+.hero-bg-3d {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, 
+    rgba(59, 130, 246, 0.1) 0%,
+    rgba(139, 92, 246, 0.05) 100%);
+  animation: floatOrb 20s infinite linear;
+  transform-style: preserve-3d;
+}
+
+.orb-1 {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 200px;
+  height: 200px;
+  top: 60%;
+  right: 10%;
+  animation-delay: -5s;
+}
+
+.orb-3 {
+  width: 150px;
+  height: 150px;
+  bottom: 20%;
+  left: 20%;
+  animation-delay: -10s;
+}
+
+@keyframes floatOrb {
+  0%, 100% {
+    transform: 
+      translate3d(0, 0, 0) 
+      rotate(0deg) 
+      scale(1);
+  }
+  33% {
+    transform: 
+      translate3d(30px, -30px, 20px) 
+      rotate(120deg) 
+      scale(1.1);
+  }
+  66% {
+    transform: 
+      translate3d(-20px, 20px, -10px) 
+      rotate(240deg) 
+      scale(0.9);
+  }
+}
+
+.hero-grid-3d {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+  transform-style: preserve-3d;
+}
+
+@media (min-width: 1024px) {
+  .hero-grid-3d {
+    grid-template-columns: 7fr 5fr;
+    gap: 4rem;
+  }
+}
+
+.hero-content-3d {
+  transform-style: preserve-3d;
+}
+
+.hero-title-3d {
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgb(15, 23, 42);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  transform-style: preserve-3d;
+  animation: titleReveal3D 1.2s cubic-bezier(0.23, 1, 0.320, 1) forwards;
+  opacity: 0;
+  transform: translateY(50px) rotateX(30deg);
+}
+
+.dark .hero-title-3d {
+  color: rgb(248, 250, 252);
+}
+
+@media (min-width: 768px) {
+  .hero-title-3d {
+    font-size: 4rem;
+  }
+}
+
+@keyframes titleReveal3D {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+.hero-subtitle-3d {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgb(59, 130, 246);
+  margin-bottom: 1.5rem;
+  transform-style: preserve-3d;
+  animation: subtitleReveal3D 1.2s cubic-bezier(0.23, 1, 0.320, 1) 0.3s forwards;
+  opacity: 0;
+  transform: translateY(30px) rotateX(20deg);
+}
+
+.dark .hero-subtitle-3d {
+  color: rgb(96, 165, 250);
+}
+
+@keyframes subtitleReveal3D {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+.hero-bio-3d {
+  font-size: 1.125rem;
+  color: rgb(100, 116, 139);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  transform-style: preserve-3d;
+  animation: bioReveal3D 1.2s cubic-bezier(0.23, 1, 0.320, 1) 0.6s forwards;
+  opacity: 0;
+  transform: translateY(20px) rotateX(10deg);
+}
+
+.dark .hero-bio-3d {
+  color: rgb(148, 163, 184);
+}
+
+@keyframes bioReveal3D {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+.hero-buttons-3d {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  transform-style: preserve-3d;
+  animation: buttonsReveal3D 1s cubic-bezier(0.23, 1, 0.320, 1) 0.9s forwards;
+  opacity: 0;
+}
+
+@keyframes buttonsReveal3D {
+  to {
+    opacity: 1;
+  }
+}
+
+.btn-hero-primary-3d {
+  background: linear-gradient(135deg, 
+    rgb(59, 130, 246) 0%,
+    rgb(37, 99, 235) 100%);
+  color: white;
+  padding: 0.875rem 2rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-hero-primary-3d::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-hero-primary-3d:hover::before {
+  left: 100%;
+}
+
+.btn-hero-primary-3d:hover {
+  transform: 
+    perspective(1000px)
+    translateY(-4px)
+    translateZ(20px)
+    scale(1.05);
+  box-shadow: 
+    0 20px 40px -10px rgba(59, 130, 246, 0.5),
+    0 0 30px rgba(59, 130, 246, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-hero-secondary-3d {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.7) 100%);
+  backdrop-filter: blur(10px);
+  color: rgb(15, 23, 42);
+  padding: 0.875rem 2rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dark .btn-hero-secondary-3d {
+  background: linear-gradient(135deg, 
+    rgba(30, 41, 59, 0.9) 0%,
+    rgba(15, 23, 42, 0.7) 100%);
+  color: rgb(248, 250, 252);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-hero-secondary-3d:hover {
+  transform: 
+    perspective(1000px)
+    translateY(-3px)
+    translateZ(15px);
+  box-shadow: 
+    0 15px 30px -5px rgba(0, 0, 0, 0.2),
+    0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+.btn-hero-outline-3d {
+  background: transparent;
+  color: rgb(59, 130, 246);
+  padding: 0.875rem 2rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  font-weight: 600;
+  border: 2px solid rgb(59, 130, 246);
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dark .btn-hero-outline-3d {
+  color: rgb(96, 165, 250);
+  border-color: rgb(96, 165, 250);
+}
+
+.btn-hero-outline-3d:hover {
+  background: rgb(59, 130, 246);
+  color: white;
+  transform: 
+    perspective(1000px)
+    translateY(-3px)
+    translateZ(15px);
+  box-shadow: 
+    0 15px 30px -5px rgba(59, 130, 246, 0.3),
+    0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+.dark .btn-hero-outline-3d:hover {
+  background: rgb(96, 165, 250);
+  border-color: rgb(96, 165, 250);
+}
+
+.social-links-3d {
+  display: flex;
+  gap: 1rem;
+  transform-style: preserve-3d;
+}
+
+.social-icon-3d {
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  color: rgb(100, 116, 139);
+  text-decoration: none;
+  transform-style: preserve-3d;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .social-icon-3d {
+  background: rgba(30, 41, 59, 0.8);
+  color: rgb(148, 163, 184);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-icon-3d::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(59, 130, 246, 0.1) 0%,
+    rgba(139, 92, 246, 0.05) 100%);
+  border-radius: 0.75rem;
+  transform: translateZ(-5px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.social-icon-3d:hover::before {
+  opacity: 1;
+}
+
+.social-icon-3d:hover {
+  color: rgb(59, 130, 246);
+  transform: 
+    perspective(1000px)
+    translateY(-3px)
+    translateZ(10px)
+    scale(1.1);
+  box-shadow: 
+    0 10px 25px -5px rgba(59, 130, 246, 0.3),
+    0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+.dark .social-icon-3d:hover {
+  color: rgb(96, 165, 250);
+}
+
+.hero-profile-3d {
+  display: flex;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.profile-card-3d {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.7) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  animation: profileCardReveal 1.5s cubic-bezier(0.23, 1, 0.320, 1) 0.3s forwards;
+  opacity: 0;
+  transform: translateX(50px) rotateY(30deg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .profile-card-3d {
+  background: linear-gradient(135deg, 
+    rgba(30, 41, 59, 0.9) 0%,
+    rgba(15, 23, 42, 0.7) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes profileCardReveal {
+  to {
+    opacity: 1;
+    transform: translateX(0) rotateY(0);
+  }
+}
+
+.profile-card-3d:hover {
+  transform: 
+    perspective(1000px)
+    rotateX(5deg)
+    rotateY(-8deg)
+    translateY(-15px)
+    translateZ(25px);
+  box-shadow: 
+    0 30px 60px -15px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(59, 130, 246, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.profile-content-3d {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transform-style: preserve-3d;
+}
+
+.avatar-container-3d {
+  margin-bottom: 1.5rem;
+  transform-style: preserve-3d;
+}
+
+.avatar-3d {
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform-style: preserve-3d;
+  animation: avatarFloat3D 8s ease-in-out infinite;
+  position: relative;
+}
+
+.dark .avatar-3d {
+  border-color: rgb(30, 41, 59);
+}
+
+.avatar-3d::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, 
+    rgba(59, 130, 246, 0.3) 0%,
+    rgba(139, 92, 246, 0.2) 100%);
+  transform: translateZ(-15px);
+  filter: blur(15px);
+  opacity: 0.6;
+  animation: avatarGlow3D 4s ease-in-out infinite alternate;
+}
+
+@keyframes avatarFloat3D {
+  0%, 100% { 
+    transform: 
+      translate3d(0, 0, 0) 
+      rotateY(0deg) 
+      scale(1);
+  }
+  50% { 
+    transform: 
+      translate3d(0, -10px, 10px) 
+      rotateY(5deg) 
+      scale(1.03);
+  }
+}
+
+@keyframes avatarGlow3D {
+  0% {
+    opacity: 0.4;
+    transform: translateZ(-15px) scale(0.95);
+  }
+  100% {
+    opacity: 0.7;
+    transform: translateZ(-15px) scale(1.05);
+  }
+}
+
+.profile-info-3d {
+  margin-bottom: 2rem;
+  transform-style: preserve-3d;
+}
+
+.profile-name-3d {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgb(15, 23, 42);
+  margin-bottom: 0.5rem;
+}
+
+.dark .profile-name-3d {
+  color: rgb(248, 250, 252);
+}
+
+.profile-location-3d {
+  color: rgb(100, 116, 139);
+  font-size: 1rem;
+}
+
+.dark .profile-location-3d {
+  color: rgb(148, 163, 184);
+}
+
+.profile-stats-3d {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+  transform-style: preserve-3d;
+}
+
+.stat-card-3d {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 0.75rem;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .stat-card-3d {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-card-3d::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(59, 130, 246, 0.05) 0%,
+    rgba(139, 92, 246, 0.02) 100%);
+  border-radius: 0.75rem;
+  transform: translateZ(-3px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.stat-card-3d:hover::before {
+  opacity: 1;
+}
+
+.stat-card-3d:hover {
+  transform: translateZ(5px);
+}
+
+.stat-number-3d {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgb(59, 130, 246);
+  margin-bottom: 0.25rem;
+}
+
+.dark .stat-number-3d {
+  color: rgb(96, 165, 250);
+}
+
+.stat-label-3d {
+  font-size: 0.75rem;
+  color: rgb(100, 116, 139);
+  font-weight: 500;
+}
+
+.dark .stat-label-3d {
+  color: rgb(148, 163, 184);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .floating-orb,
+  .avatar-3d {
+    animation: none;
+  }
+  
+  .hero-title-3d,
+  .hero-subtitle-3d,
+  .hero-bio-3d,
+  .hero-buttons-3d,
+  .profile-card-3d {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .btn-hero-primary-3d:hover,
+  .btn-hero-secondary-3d:hover,
+  .btn-hero-outline-3d:hover,
+  .social-icon-3d:hover,
+  .stat-card-3d:hover,
+  .profile-card-3d:hover {
+    transform: none;
+  }
+  
+  .avatar-3d::after {
+    animation: none;
+  }
+}
