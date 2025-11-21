@@ -59,7 +59,7 @@ export default function handler(req, res) {
         image: "/api/placeholder/400/250",
         technologies: ["React", "Express.js", "NodeMailer", "JavaScript", "CSS"],
         githubUrl: "https://github.com/VidhyaReddy07/portfolio",
-        liveUrl: "https://portfolio-demo.com",
+        liveUrl: "https://portfolio-one-gilt-rxoqiv59dn.vercel.app/",
         featured: true
       }
     ],
