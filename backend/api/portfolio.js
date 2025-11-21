@@ -1,7 +1,24 @@
 export default function handler(req, res) {
-  // Allow CORS from configured frontend or all during development
-  const FRONTEND = process.env.FRONTEND_URL || '*';
-  res.setHeader('Access-Control-Allow-Origin', FRONTEND);
+  // CORS: normalize configured FRONTEND_URL and echo request origin when appropriate
+  const rawFrontend = process.env.FRONTEND_URL || '';
+  const configuredFrontend = rawFrontend ? rawFrontend.replace(/\/$/, '') : null;
+  const requestOrigin = req.headers.origin;
+  let allowOrigin = '*';
+  if (configuredFrontend) {
+    // if request origin matches configured frontend (ignoring trailing slash), allow it
+    if (requestOrigin && requestOrigin.replace(/\/$/, '') === configuredFrontend) {
+      allowOrigin = requestOrigin;
+    } else {
+      // otherwise fall back to the configured frontend
+      allowOrigin = configuredFrontend;
+    }
+  } else if (requestOrigin) {
+    // no configured frontend — allow the requesting origin
+    allowOrigin = requestOrigin;
+  }
+
+  res.setHeader('Access-Control-Allow-Origin', allowOrigin);
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   if (req.method === 'OPTIONS') return res.status(200).end();
